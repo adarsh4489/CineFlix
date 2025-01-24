@@ -1,5 +1,9 @@
-*{
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+.bgRed{
+  background: #C11119;
+}
+.textRed{
+  color: #C11119;
+}
+.bgImage{
+  background-image: url("https://assets.nflxext.com/ffe/siteui/vlv3/7a8c0067-a424-4e04-85f8-9e25a49a86ed/web/IN-en-20250120-TRIFECTA-perspective_860a95da-c386-446e-af83-fef8ddd80803_large.jpg");
 }
