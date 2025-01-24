@@ -8,3 +8,6 @@
 - this will contain array of objects having path and element
 - we will import appRouter with RouterProvider
 
+
+- made login page
+- add validations using use ref hook
