@@ -10,11 +10,11 @@ import { addUser,removeUser } from "../Utils/userSlice";
 
 const Navbar = () => {
 const navigate=useNavigate();
-  const user =useSelector(store=>store.user);
+  // const user =useSelector(store=>store.user);
 const dispatch = useDispatch();
 
   useEffect(()=>{
-    onAuthStateChanged(auth, (user) => {
+   const unsubscribe= onAuthStateChanged(auth, (user) => {
         if (user) {
           const {uid,email,displayName} = user;
           dispatch(addUser({uid:uid,email:email,displayName:displayName}))
@@ -23,6 +23,8 @@ const dispatch = useDispatch();
           dispatch(removeUser());
           navigate("/");
         }
+        // unsubscru=ibe when components unmounts
+return ()=> unsubscribe();
       });
 },[])
   
@@ -35,7 +37,7 @@ const dispatch = useDispatch();
   };
 
   return (
-    <div className="w-full fixed items-center flex justify-between px-12 bg-black/40 ">
+    <div className="w-full z-10 fixed items-center flex justify-between px-12 bg-gradient-to-b from-black ">
       <div>
         <img
           src={LOGO}
