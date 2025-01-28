@@ -5,11 +5,11 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import Navbar from "./Navbar";
 
 const Login = () => {
-  const [isSignIn, setIsSignIn] = useState(false);
-  const navigate=useNavigate();
+  const [isSignIn, setIsSignIn] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
 
   const fullName = useRef(null);
@@ -34,7 +34,7 @@ const Login = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           console.log(user);
-          alert("SignUp successfully");
+          toast("SignUp successfully");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -51,14 +51,13 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          alert("SignIn successfully");
-         console.log(user);
-         navigate()
+          toast("SignIn successfully");
+          //  console.log(user);
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode+"-"+errorMessage)
+          console.log(errorCode + "-" + errorMessage);
         });
     }
   };
@@ -67,6 +66,7 @@ const Login = () => {
   };
   return (
     <div className="bgImage">
+      <Navbar />
       <div className="bg-black/40 h-screen w-full items-center flex justify-center">
         <div className="bg-black/75 w-[30%]  mt-10 rounded-lg text-white px-10 py-10">
           <h1 className="text-3xl font-bold my-4">
@@ -115,12 +115,12 @@ const Login = () => {
             Forgot Password?
           </h2>
           <p className="text-center ">
-            {isSignIn ? "New to Netflix": "if you already have an account "}
+            {isSignIn ? "New to Netflix" : "if you already have an account "}
             <span
-              className="textRed  underline cursor-pointer"
+              className="textRed mx-1 font-semibold underline cursor-pointer"
               onClick={toggleForm}
             >
-              {isSignIn ?"Sign Up ":"Sign In" }
+              {isSignIn ? "Sign Up " : "Sign In"}
             </span>
             Now
           </p>

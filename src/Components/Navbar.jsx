@@ -1,13 +1,51 @@
+import { FaUser } from "react-icons/fa";
+import {LOGO} from "../Utils/constants"
+import { signOut,onAuthStateChanged } from "firebase/auth";
+import { auth } from "../Utils/Firebase";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { addUser,removeUser } from "../Utils/userSlice";
+
 const Navbar = () => {
+const navigate=useNavigate();
+  const user =useSelector(store=>store.user);
+const dispatch = useDispatch();
+
+  useEffect(()=>{
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+          const {uid,email,displayName} = user;
+          dispatch(addUser({uid:uid,email:email,displayName:displayName}))
+          navigate("/browse");
+        } else {
+          dispatch(removeUser());
+          navigate("/");
+        }
+      });
+},[])
+  
+  const handleSignout=()=>{
+    signOut(auth).then(() => {
+      toast("signout Succesfully");
+    }).catch((error) => {
+      toast(error);
+    });
+  };
+
   return (
-    <div className="w-full fixed flex">
+    <div className="w-full fixed items-center flex justify-between px-12 bg-black/40 ">
       <div>
         <img
-          src="
-https://help.nflxext.com/helpcenter/OneTrust/oneTrust_production/consent/87b6a5c0-0104-4e96-a291-092c11350111/01938dc4-59b3-7bbc-b635-c4131030e85f/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
+          src={LOGO}
           className="w-40"
           alt="logo"
         />
+      </div>
+      <div className="flex items-center gap-4">
+        <FaUser className="text-white text-xl" />
+        <button className="cursor-pointer text-white" onClick={handleSignout}>SignOut</button>
       </div>
     </div>
   );

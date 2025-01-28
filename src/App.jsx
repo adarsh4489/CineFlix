@@ -1,16 +1,20 @@
 
+import { Provider } from 'react-redux'
 import './App.css'
 import Body from './Components/Body'
-import Navbar from './Components/Navbar'
-
+import appStore from './Utils/appStore'
+import { ToastContainer } from 'react-toastify'
 
 function App() {
 
   return (
-    <div className=''>
-      <Navbar/>
+    <Provider store={appStore}>
+    
+      <div className=''>
      <Body/>
     </div>
+    <ToastContainer/>
+    </Provider>
   )
 }
 
