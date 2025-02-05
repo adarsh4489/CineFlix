@@ -23,13 +23,15 @@ const dispatch = useDispatch();
           dispatch(removeUser());
           navigate("/");
         }
-        // unsubscru=ibe when components unmounts
+        // unsubscribe when components unmounts
 return ()=> unsubscribe();
       });
-},[])
+},[dispatch,navigate])
   
   const handleSignout=()=>{
     signOut(auth).then(() => {
+      dispatch(removeUser());
+      navigate("/");
       toast("signout Succesfully");
     }).catch((error) => {
       toast(error);
