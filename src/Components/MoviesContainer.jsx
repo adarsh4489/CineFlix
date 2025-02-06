@@ -6,13 +6,16 @@ const MoviesContainer = () => {
     if(!movies.nowPlayingMovies)
         return;
     // console.log(movies,"i am changing")
-    // console.log(movies.nowPlayingMovies[0],"abcd");
+    console.log(movies.popularMovies,"popularmovies");
+    console.log(movies.nowPlayingMovies,"nowPlaying");
+    console.log(movies.topRatedMovies,"TopRatedMovies");
+
   return (
     <div className="flex flex-col gap-4 bg-black">
         <div className="-mt-32 z-20">
         <MovieList title={"Now Playing"} movies={movies.nowPlayingMovies}/>
-        {/* <MovieList title={"Top Rated"} movies={movies.topRatedMovies}/> */}
-        <MovieList title={"Now Playing"} movies={movies.nowPlayingMovies}/>
+        <MovieList title={"Popular Movies"} movies={movies.popularMovies}/>
+        <MovieList title={"Top Rated"} movies={movies.topRatedMovies}/>
         </div>
     </div>
   )

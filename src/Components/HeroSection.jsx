@@ -30,15 +30,16 @@ const HeroSection = () => {
   
   const {title,overview,}=movie;
   return (
-    <div className="h-screen w-screen flex items-center ">
+    <div className="w-screen flex items-center ">
       <iframe
-        className="w-full h-full"
-        src={`https://www.youtube.com/embed/${teaserKey}?autoplay=1&mute=1&loop=1&playlist=${teaserKey}`}
-        title="YouTube video player"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
-        allowfullscreen
-      ></iframe>
+  className="w-screen aspect-video"
+  src={`https://www.youtube.com/embed/${teaserKey}?autoplay=1&mute=1&loop=1&playlist=${teaserKey}&controls=0&modestbranding=1&showinfo=0&rel=0&fs=1`}
+  title="YouTube video player"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  referrerPolicy="strict-origin-when-cross-origin"
+  allowFullScreen
+></iframe>
+
       <HeroDescription title={title} overview={overview} />
     </div>
   );

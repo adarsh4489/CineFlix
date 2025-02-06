@@ -39,7 +39,7 @@ return ()=> unsubscribe();
   };
 
   return (
-    <div className="w-full z-10 fixed items-center flex justify-between px-12 bg-gradient-to-b from-black ">
+    <div className="w-full z-10 fixed items-center flex justify-between px-12 bg-gradient-to-r from-black ">
       <div>
         <img
           src={LOGO}

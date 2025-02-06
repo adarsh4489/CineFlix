@@ -4,7 +4,7 @@ import { BsInfoCircle } from "react-icons/bs";
 
 const HeroDescription = ({title,overview}) => {
     return (
-    <div className="bg-gradient-to-r from-black w-full h-screen absolute pt-[20%] pl-[5%] flex flex-col p-2 gap-2 ">
+    <div className="bg-gradient-to-r from-black w-full h-screen absolute pt-[20%] pl-[5%] flex flex-col  gap-2 ">
        {/* <img src={poster_path} alt="" /> */}
         <h2 className="text-4xl font-semibold text-white">{title}</h2>
         <p className="text-sm w-[30%] text-slate-400">{overview}</p>
