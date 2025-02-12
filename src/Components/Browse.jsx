@@ -5,16 +5,19 @@ import HeroSection from "./HeroSection";
 import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 import usePopularMovies from "../hooks/usePopularMovies";
 import useTopRatedMovies from "../hooks/useTopRatedMovies";
+import GPTSearch from "./GPTSearch";
+import { useSelector } from "react-redux";
 
 const Browse = () => {
-  // const[nowPlaying,setNowPlaying]=useState(null);
+  const showGpt=useSelector((store)=>store.gpt.showGptSearch)
  useNowPlayingMovies();
  usePopularMovies();
  useTopRatedMovies();
   return <div className="w-full overflow-x-hidden">
     <Navbar/>
-    <HeroSection/>
-    <MoviesContainer/>
+   {showGpt?<GPTSearch/>:<><HeroSection/>
+    <MoviesContainer/></>}
+    
   </div>;
 };
 
